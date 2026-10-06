@@ -67,6 +67,7 @@ class LoanApprovalAi(nn.Module):
 
 # panggil model
 model = LoanApprovalAi()
+model.load_state_dict(torch.load("./bank_loan/otak_bank_ai.pth"))
 
 # 3. Guru & Optimizer
 # MSELoss = Mean Squared Error Loss, sama fungsinya untuk melihat seberapa meleset tebakan
@@ -75,30 +76,30 @@ criterion = nn.MSELoss()
 # Kita pakai Learning Rate 0.1 karena jaringannya sekarang lebih kompleks
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
-# 4. Training
-epochs = 5000
-print("Mulai proses training dengan Hidden Layer (ReLU)...\n")
+# # 4. Training
+# epochs = 5000
+# print("Mulai proses training dengan Hidden Layer (ReLU)...\n")
 
 
-for epoch in range(epochs):
-    # Langkah 1: bersihkan sisa - sisa hitungan lama
-    optimizer.zero_grad()
+# for epoch in range(epochs):
+#     # Langkah 1: bersihkan sisa - sisa hitungan lama
+#     optimizer.zero_grad()
 
-    # Langkah 2: suruh model menebak (forward pass)
-    output = model(x)
+#     # Langkah 2: suruh model menebak (forward pass)
+#     output = model(x)
 
-    # Langkah 3: hitung error (Loss)
-    loss = criterion(output, y)
+#     # Langkah 3: hitung error (Loss)
+#     loss = criterion(output, y)
 
-    # Langkah 4: menghitung turunan (derivative) secara OTOMATIS!
-    loss.backward()
+#     # Langkah 4: menghitung turunan (derivative) secara OTOMATIS!
+#     loss.backward()
 
-    # Langkah 5: update bobot dan bias berdasarkan hitungan langkah
-    optimizer.step()
+#     # Langkah 5: update bobot dan bias berdasarkan hitungan langkah
+#     optimizer.step()
 
-    # print progress
-    if epoch % 1000 == 0:
-        print(f"Epoch {epoch} | Total Error (Loss): {loss.item():.4f}")
+#     # print progress
+#     if epoch % 1000 == 0:
+#         print(f"Epoch {epoch} | Total Error (Loss): {loss.item():.4f}")
 
 
 # 5. UJIAN AKHIR: PREDIKSI NASABAH BARU!print("\n=== KEDATANGAN 3 NASABAH BARU ===")
@@ -111,14 +112,13 @@ nasabah_baru = torch.tensor(
     ]
 )
 
+# Langsung tes!
+model.eval()
 with torch.no_grad():
     hasil_prediksi = model(nasabah_baru)
     print(f"hasil prediksi = {hasil_prediksi}")
     print("Format input: [pendapatan, utang]")
     for i in range(len(nasabah_baru)):
-        print(
-            f"cek data {i} =  nasabah_baru[i] -> {nasabah_baru[i][0]} || nasabah_baru[i][1] -> {nasabah_baru[i][1]} || nasabah_baru[i][0].item() -> {nasabah_baru[i][0].item()}"
-        )
         gaji = nasabah_baru[i][0].item() * 10
         utang = nasabah_baru[i][1].item() * 10
         skor = hasil_prediksi[i].item()
@@ -128,3 +128,6 @@ with torch.no_grad():
         print(
             f"Nasabah {i+1} (Gaji: {gaji:.1f}jt, Utang: {utang:.1f}jt) -> Skor AI: {skor:.2f} ({status})"
         )
+
+# simpan model
+# torch.save(model.state_dict(), "./bank_loan/otak_bank_ai.pth")
