@@ -58,7 +58,7 @@ for row in data_features:
     features_normalized.append([norm_bat, norm_ram, norm_harga])
 
 # Ubah List Python menjadi Tensor PyTorch
-x = torch.tensor(features_normalized, dtype=torch.float32)
+X = torch.tensor(features_normalized, dtype=torch.float32)
 y = torch.tensor(data_targets, dtype=torch.long)
 
 
@@ -71,8 +71,8 @@ class SmartPhoneAI(nn.Module):
         # 8 Neuron -> 3 Output(Entry, Mid, Flagship)
         self.output = nn.Linear(8, 3)
 
-    def forward(self, x):
-        z1 = torch.relu(self.hidden(x))
+    def forward(self, X):
+        z1 = torch.relu(self.hidden(X))
         return self.output(z1)  # tanpa sigmoid (pakai CrossEntropy)
 
 
