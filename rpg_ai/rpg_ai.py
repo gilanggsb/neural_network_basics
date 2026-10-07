@@ -58,6 +58,7 @@ class RPGClassifierAI(nn.Module):
 
 
 model = RPGClassifierAI()
+model.load_state_dict(torch.load("./rpg_ai/otak_rpg_ai.pth"))
 
 # 3. Guru & Optimizer (Khusus untuk Multi-Class)
 # CrossEntropyLoss otomatis mengubah angka mentah (Logits) menjadi persentase probabilitas (Softmax)
@@ -65,37 +66,37 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
 # 4. Training (Multi-Class)
-epochs = 10000
-print("AI sedang menyeleksi kandidat RPG...\n")
+# epochs = 10000
+# print("AI sedang menyeleksi kandidat RPG...\n")
 
-for epoch in range(epochs):
-    # Langkah 1: bersihkan sisa - sisa hitungan lama
-    optimizer.zero_grad()
+# for epoch in range(epochs):
+#     # Langkah 1: bersihkan sisa - sisa hitungan lama
+#     optimizer.zero_grad()
 
-    # Langkah 2: suruh model menebak (forward pass)
-    predictions = model(x)
+#     # Langkah 2: suruh model menebak (forward pass)
+#     predictions = model(x)
 
-    # Langkah 3: hitung error (loss)
-    loss = criterion(predictions, y)
+#     # Langkah 3: hitung error (loss)
+#     loss = criterion(predictions, y)
 
-    # Langkah 4: menghitung turunan (derivative) secara OTOMATIS!
-    loss.backward()
+#     # Langkah 4: menghitung turunan (derivative) secara OTOMATIS!
+#     loss.backward()
 
-    # Langkah 5: update bobot dan bias berdasarkan hitungan langkah
-    optimizer.step()
+#     # Langkah 5: update bobot dan bias berdasarkan hitungan langkah
+#     optimizer.step()
 
-    # print progress
-    if epoch % 1000 == 0:
-        print(f"Epoch {epoch} | Total Error (Loss): {loss.item():.4f}")
+#     # print progress
+#     if epoch % 1000 == 0:
+#         print(f"Epoch {epoch} | Total Error (Loss): {loss.item():.4f}")
 
 
 # 5. UJIAN AKHIR: Pemain Baru Login!print("\n=== PEMAIN BARU LOGIN ===")
 pemain_baru = torch.tensor(
     [
         [0.85, 0.15],  # Harusnya Warrior
-        [0.85, 0.15],  # Harusnya Warrior
         [0.15, 0.85],  # Harusnya Mage
         [0.55, 0.45],  # Harusnya Archer
+        [0.35, 0.69],  # Harusnya Mage
         [0.70, 0.80],  # Tipe aneh (Fisik kuat, Sihir kuat) -> Kita lihat AI milih apa!
     ]
 )
@@ -103,6 +104,7 @@ pemain_baru = torch.tensor(
 # Kamus untuk menerjemahkan angka ke nama Role
 role_dict = {0: "Warrior 🗡️", 1: "Mage 🧙‍♂️", 2: "Archer 🏹"}
 
+model.eval()
 with torch.no_grad():
     # Hasil tebakan masih berupa 3 angka mentah untuk setiap pemain
     hasil_mentah = model(pemain_baru)
@@ -127,4 +129,4 @@ with torch.no_grad():
         )
 
 # simpan model
-torch.save(model.state_dict(), "./rpg_ai/otak_rpg_ai.pth")
+# torch.save(model.state_dict(), "./rpg_ai/otak_rpg_ai.pth")
