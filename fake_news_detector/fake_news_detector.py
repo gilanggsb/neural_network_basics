@@ -4,7 +4,7 @@ import sys
 # Tambahkan path folder utama agar bisa import global 'helpers'
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from helpers.model_handler import save_model, load_model
+from helpers.model_handler import save_model, load_model, is_model_exists
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -108,28 +108,29 @@ criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 
 
-# ---- 4. TRAINING AI ---- #
-print("\nMulai training AI Fake News Detector...")
-epochs = 2000
-for epoch in range(epochs):
-    # Langkah 1: bersihkan sisa - sisa hitungan lama
-    optimizer.zero_grad()
+if not is_model_exists(otak_fake_news_detector_ai_path):
+    # ---- 4. TRAINING AI ---- #
+    print("\nMulai training AI Fake News Detector...")
+    epochs = 2000
+    for epoch in range(epochs):
+        # Langkah 1: bersihkan sisa - sisa hitungan lama
+        optimizer.zero_grad()
 
-    # Langkah 2: suruh model menebak (forward pass)
-    prediction = model(X)
+        # Langkah 2: suruh model menebak (forward pass)
+        prediction = model(X)
 
-    # Langkah 3: hitung error (loss)
-    loss = criterion(prediction, y)
+        # Langkah 3: hitung error (loss)
+        loss = criterion(prediction, y)
 
-    # Langkah 4: menghitung turunan (derivative) secara OTOMATIS
-    loss.backward()
+        # Langkah 4: menghitung turunan (derivative) secara OTOMATIS
+        loss.backward()
 
-    # Langkah 5: update bobot dan bias berdasarkan hitungan langkah
-    optimizer.step()
+        # Langkah 5: update bobot dan bias berdasarkan hitungan langkah
+        optimizer.step()
 
-    # print progress
-    if epoch % 100 == 0:
-        print(f"Epoch {epoch} | Total Error (Loss): {loss.item():.4f}")
+        # print progress
+        if epoch % 100 == 0:
+            print(f"Epoch {epoch} | Total Error (Loss): {loss.item():.4f}")
 
 
 # ---- 5. UJIAN AKHIR (INFERENCE) ---- #

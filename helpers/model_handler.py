@@ -2,12 +2,17 @@ import os
 import torch
 
 
+def is_model_exists(path):
+    return os.path.exists(path)
+
+
 def load_model(model, path):
-    if os.path.exists(path):
-        model.load_state_dict(torch.load(path))
-        print("Model loaded from", path)
-    else:
+    if not is_model_exists(path):
         print("Model not found at", path, "- starting from scratch.")
+        return model
+
+    model.load_state_dict(torch.load(path))
+    print("Model loaded from", path)
     return model
 
 
