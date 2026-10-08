@@ -1,0 +1,9 @@
+Bulan_Langganan,Tagihan_Bulanan,Tipe_Kontrak,Churn
+2,50000,Bulanan,1
+60,150000,Tahunan,0
+1,45000,Bulanan,1
+12,85000,Bulanan,0
+48,120000,Tahunan,0
+5,55000,Bulanan,1
+24,90000,Tahunan,0
+3,60000,Bulanan,1
