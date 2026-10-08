@@ -2,7 +2,7 @@ import os
 import sys
 
 # Tambahkan path folder utama agar bisa import global 'helpers'
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from helpers.model_handler import save_model, load_model, is_model_exists
 import torch
