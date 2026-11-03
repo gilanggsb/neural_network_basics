@@ -5,7 +5,6 @@ memahami neural network dan modern NLP/LLM secara bertahap. Roadmap bergerak
 dari fondasi matematika dan PyTorch menuju embeddings, Transformers, RAG,
 fine-tuning, dan agents. Proyek-proyeknya ditujukan untuk membangun fondasi
 serta pengalaman praktik yang bisa dikembangkan lebih lanjut.
----
 
 ## 🗺️ Roadmap
 
