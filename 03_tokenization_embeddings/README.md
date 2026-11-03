@@ -2,7 +2,7 @@
 
 > **Tujuan:** Memahami bagaimana model modern mengubah teks menjadi representasi matematika yang kaya makna — berbeda jauh dari Bag-of-Words yang kaku.
 
-## Status: 🔒 Belum Dimulai
+## Status: 🔄 Sedang Dipelajari
 
 **Prerequisite:** Selesaikan folder `00_foundations`, `01_tabular_classification`, dan `02_traditional_nlp` terlebih dahulu.
 
@@ -44,7 +44,7 @@ Arsitektur sebelum Transformer — membaca teks **secara berurutan** dengan memo
 | Proyek | Konsep | Status |
 |---|---|---|
 | `bpe_tokenizer/` | Implement BPE dari scratch | 🔲 Belum |
-| `word_embedding/` | nn.Embedding + visualisasi vektor | 🔲 Belum |
+| [`word_embedding/`](./word_embedding/README.md) | nn.Embedding + cosine similarity | 🟡 Demo dasar tersedia |
 | `rnn_sequence/` | Klasifikasi teks dengan RNN/LSTM | 🔲 Belum |
 
 ---

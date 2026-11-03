@@ -1,7 +1,10 @@
 # Neural Network & LLM Engineer Learning Path
 
-Repositori ini adalah perjalanan belajar **dari nol hingga siap industri** mengikuti roadmap **Modern NLP / LLM Engineer**. Setiap folder merepresentasikan satu level kompetensi yang harus dikuasai secara berurutan.
-
+Repositori ini adalah catatan belajar dan kumpulan latihan praktis untuk
+memahami neural network dan modern NLP/LLM secara bertahap. Roadmap bergerak
+dari fondasi matematika dan PyTorch menuju embeddings, Transformers, RAG,
+fine-tuning, dan agents. Proyek-proyeknya ditujukan untuk membangun fondasi
+serta pengalaman praktik yang bisa dikembangkan lebih lanjut.
 ---
 
 ## 🗺️ Roadmap
@@ -11,8 +14,8 @@ Repositori ini adalah perjalanan belajar **dari nol hingga siap industri** mengi
 | [`00_foundations/`](./00_foundations/README.md) | 0 | Perceptron Manual & PyTorch Training Loop | ✅ Selesai |
 | [`01_tabular_classification/`](./01_tabular_classification/README.md) | 1 | Neural Network untuk Data Tabular | ✅ Selesai |
 | [`02_traditional_nlp/`](./02_traditional_nlp/README.md) | 2 | Bag-of-Words & Keterbatasannya | ✅ Selesai |
-| [`03_tokenization_embeddings/`](./03_tokenization_embeddings/README.md) | 3 | BPE, WordPiece, Word Embeddings, RNN/LSTM | 🔲 Selanjutnya |
-| [`04_transformers/`](./04_transformers/README.md) | 4 | Self-Attention, Positional Encoding, Mini-GPT | 🔲 Belum |
+| [`03_tokenization_embeddings/`](./03_tokenization_embeddings/README.md) | 3 | BPE, WordPiece, Word Embeddings, RNN/LSTM | 🔄 Sedang dipelajari |
+| [`04_transformers/`](./04_transformers/README.md) | 4 | Self-Attention, Positional Encoding, Mini-GPT | 🔄 Demo self-attention tersedia |
 | [`05_rag_and_llm/`](./05_rag_and_llm/README.md) | 5 | HuggingFace, RAG, Vector DB, Evaluasi | 🔲 Belum |
 | [`06_finetuning_and_agents/`](./06_finetuning_and_agents/README.md) | 6 | LoRA, QLoRA, Agents, LLMOps | 🔲 Belum |
 
@@ -27,7 +30,9 @@ neural_net_basics/
 ├── 01_tabular_classification/       ← Bank Loan, Churn, Pabrik, HP, RPG
 ├── 02_traditional_nlp/             ← Fake News, Sentimen (Bag-of-Words)
 ├── 03_tokenization_embeddings/     ← BPE, Embedding, RNN/LSTM
+│   └── word_embedding/             ← Lookup embedding & cosine similarity
 ├── 04_transformers/                ← Self-Attention, Positional Enc, GPT mini
+│   └── self_attention/             ← Demo QKV manual dua ronde
 ├── 05_rag_and_llm/                 ← HuggingFace, RAG, VectorDB
 ├── 06_finetuning_and_agents/       ← LoRA, QLoRA, Agents, LLMOps
 │

@@ -2,7 +2,7 @@
 
 > **Tujuan:** Memahami arsitektur revolusioner yang menjadi fondasi semua LLM modern — dari BERT hingga GPT-4.
 
-## Status: 🔒 Belum Dimulai
+## Status: 🔄 Sedang Dipelajari
 
 **Prerequisite:** Selesaikan folder `03_tokenization_embeddings` terlebih dahulu.
 
@@ -45,7 +45,7 @@ Mengimplementasikan kerangka nanoGPT (ala Andrej Karpathy) untuk benar-benar mem
 
 | Proyek | Konsep | Status |
 |---|---|---|
-| `self_attention/` | Implementasi Self-Attention dari nol | 🔲 Belum |
+| [`self_attention/`](./self_attention/README.md) | Demo QKV manual, dua ronde | 🟡 Demo dasar tersedia |
 | `positional_encoding/` | Visualisasi Positional Encoding | 🔲 Belum |
 | `mini_gpt/` | Decoder-only mini Transformer (nanoGPT style) | 🔲 Belum |
 
