@@ -1,6 +1,9 @@
 {
   "python.useEnvironmentsExtension": false,
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/03_tokenization_embeddings/bpe_tokenizer"
+  ],
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true
